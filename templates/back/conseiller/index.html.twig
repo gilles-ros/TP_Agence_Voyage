@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conseiller index{% endblock %}
+
+{% block body %}
+    <h1>Conseiller index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Photo</th>
+                <th>Referent</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conseiller in conseillers %}
+            <tr>
+                <td>{{ conseiller.id }}</td>
+                <td>{{ conseiller.email }}</td>
+                <td>{{ conseiller.roles ? conseiller.roles|json_encode : '' }}</td>
+                <td>{{ conseiller.nom }}</td>
+                <td>{{ conseiller.prenom }}</td>
+                <td>{{ conseiller.photo }}</td>
+                <td>{{ conseiller.referent ? 'Yes' : 'No' }}</td>
+                <td>{{ conseiller.description }}</td>
+                <td>
+                    <a href="{{ path('app_conseiller_show', {'id': conseiller.id}) }}">show</a>
+                    <a href="{{ path('app_conseiller_edit', {'id': conseiller.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_conseiller_new') }}">Create new</a>
+{% endblock %}

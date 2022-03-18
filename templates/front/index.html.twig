@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontController!{% endblock %}
+
+{% block body %}
+{# =================Liste conseiller============== #}
+
+	<section class="section__conseiller__liste">
+		<h1>Nos Experts à votre service</h1>
+		{# ------==============Conseiller=================------ #}
+
+
+		<div
+			class="row parent row-cols-1 row-cols-md-3 g-4">
+			{# ==================CARD============================= #}
+		{% for conseiller in conseillers %}
+						
+					
+			<div class="col-4 mx-auto card__conseiller">
+                <a href="#">
+				<div class="card__picture rounded-circle"><img src="{{ asset('images/conseiller/' ~ conseiller.photo) }}" alt=""></div>
+				<div class="card-body">                
+					<h5 class="card-title">{{ conseiller.nom }} {{ conseiller.prenom }}
+						<br/>
+						{{ conseiller.specialite }}</h5>
+					<p class="card-text">{{ conseiller.description }}</p>
+				</div>
+                </a>
+			</div>
+        {% endfor %}
+
+		</div>
+		{# ==================CARD============================= #}
+
+
+	</section>
+{% endblock %}

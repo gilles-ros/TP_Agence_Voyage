@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} | produit{% endblock %}
+
+{% block body %}
+        <h1 class="tabulation"><span> {{produit.titre}}</span></h1>
+            
+       
+        <p>{{produit.description}}</p>
+            
+        {% for etape in produit.etapes  %}
+
+		<div class="row">
+			<div class="col-3">
+				<img class="conseiller_ref" src="{{ asset('images/etape/'~ etape.photo) }}" class="img-fluid rounded-start" alt="..."></div>
+			<div class="col-9">
+				<h5 class="card-title">Les etape {{ etape.titre}}  !</h5>
+				<p class="card-text">{{ etape.description }}</p>
+                <h5 class="card-title">Les hotel {{ etape.hotel}}  !</h5>
+
+
+			</div>
+		</div>
+
+
+
+  {% endfor %}
+
+
+{% endblock %}

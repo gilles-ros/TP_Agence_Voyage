@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    {{ form_row(form.titre) }}
+
+    {# ici je prépare un container qui recevra tous les formulaires pour ajouter des photos #}
+    {# dans le data-protoype je vais indiquer les données de mon formulaire (PhotoProduit). Dans chaque formulaire on a ce qu'on appelle un prototype qui contient toutes les données du formulaire et que l'on peut utiliser pour construire le formulaire au niveau html #}
+    <div class="container-etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
+        {# je fais une boucle à l'intérieur pour pouvoir afficher tous les champs de mon formulaire PhotoProduitType #}
+        {% for row in form.etapes %}
+            {# je prépare un container qui récupérera chaque formulaire #}
+            <div class="card-photo">
+                {{ form_widget(row) }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

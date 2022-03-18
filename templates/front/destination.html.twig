@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} | destination{% endblock %}
+
+{% block body %}
+
+<h1 class="tabulation">Découvrez les <span>{{ destination.titre }}</span></h1>
+<p>{{ destination.description }}</p>
+    {% for conseiller in destination.conseillers %}
+
+		{% if conseiller.referent == true %}
+
+		<div class="row">
+			<div class="col-3">
+				<img class="conseiller_ref" src="{{ asset('images/conseiller/'~ conseiller.photo) }}" class="img-fluid rounded-start" alt="..."></div>
+			<div class="col-9">
+				<h5 class="card-title">Les conseils de notre expert {{ conseiller.prenom ~ ' ' ~ conseiller.nom }} !</h5>
+				<p class="card-text">{{ conseiller.description }}</p>
+			</div>
+		</div>
+		{% endif %}
+
+	{% endfor %}
+
+  {% for produit in destination.produits %} 
+    
+     
+		<div class="row">
+			<div class="col-3">
+				<img class="conseiller_ref" src="{{ asset('images/produit/'~ produit.photo) }}" class="img-fluid rounded-start" alt="..."></div>
+			<div class="col-9">
+				<h5 class="card-title">Les produit {{ produit.titre }} </h5>
+				<p class="card-text">{{ produit.description }}</p>>
+				<p class="card-text">{{ produit.prix}}</p>
+			</div>
+		</div>
+
+ {% endfor %}
+
+
+
+
+{% endblock %}
